@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>College Finder</title>
+  <style>
+    /* Add your custom styles here */
+  </style>
+</head>
+<body>
+  <h1>College Finder</h1>
+  
+  <label for="state-input">Enter State Name:</label>
+  <input type="text" id="state-input">
+  <button onclick="searchColleges()">Search</button>
+
+  <div id="college-list"></div>
+
+  <script>
+    // Define the list of colleges
+    var colleges = [
+      { name: "Indian Institute of Information Technology, Allahabad (IIIT Allahabad)", state: "UP" },
+      { name: "Motilal Nehru National Institute of Technology (MNNIT), Allahabad", state: "UP" },
+      { name: "Harcourt Butler Technical University (HBTU), Kanpur", state: "UP" },
+      { name: "Institute of Engineering and Technology (IET), Lucknow", state: "UP" },
+      { name: "Dr. A.P.J. Abdul Kalam Technical University (AKTU), Lucknow", state: "UP" },
+      { name: "Madan Mohan Malaviya University of Technology (MMMUT), Gorakhpur", state: "UP" },
+      { name: "Jaypee Institute of Information Technology (JIIT), Noida", state: "UP" },
+      { name: "Amity University, Noida", state: "UP" },
+      { name: "Galgotias University, Greater Noida", state: "UP" },
+      { name: "Shri Ramswaroop Memorial University (SRMU), Lucknow", state: "UP" }
+    ];
+
+    function searchColleges() {
+      var stateInput = document.getElementById("state-input").value.toLowerCase();
+      var collegeList = document.getElementById("college-list");
+
+      // Clear the previous search results
+      collegeList.innerHTML = "";
+
+      // Filter the colleges based on the state name
+      var filteredColleges = colleges.filter(function(college) {
+        return college.state.toLowerCase().includes(stateInput);
+      });
+
+      // Display the filtered colleges
+      filteredColleges.forEach(function(college) {
+        var collegeItem = document.createElement("p");
+        collegeItem.textContent = college.name;
+        collegeList.appendChild(collegeItem);
+      });
+    }
+  </script>
+</body>
+</html>
